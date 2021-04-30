@@ -8,17 +8,27 @@ export default function App() {
   const [persons, setPersons] = useState('');
 
   const names =['Carlos','Isa','Jose'];
-  const addNames = () => names.map(name => name + ', ');
+  const addNames = () => names.map((name,key) => name + ', ');
   
   useEffect(()=>{
     if(count>0){
       setWords('Yo aparezco solo cuando aparecen los nombres y count es >0');
     }
+    console.log('yo salgo cuando aparecen los nombres y count es >0');
   },[persons]);
 
   useEffect(()=>{
-    setWords('yo aparezco siempre');  
+    console.log('yo salgo solo cuando cambia el contador');
+  },[count]);
+
+  useEffect(()=>{
+    setWords('yo aparezco en el primer render');  
+    console.log('yo salgo en el primer render');
   },[]);
+
+  useEffect(()=>{ 
+    console.log('yo salgo siempre que se renderiza');
+  });
 
   return (
     <>
